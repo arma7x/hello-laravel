@@ -10,18 +10,20 @@
         {{ $collections->links() }}
     </div>
     <form wire:submit.prevent="save">
+        <input id="selector" type="file" accept="image/*">
+        @error('photo') <span class="error">{{ $message }}</span> @enderror
+        <button class="btn btn-sm btn-primary" type="submit">Save Photo</button>
         <div style="width:100%;display:flex;flex-direction:row;align-items:center;justify-content:flex-start;">
         @foreach($photos as $index => $photo)
             @if ($index == 0)
+<!--
                 <img id="img-preview" width="300px;" height="auto" src="{{ $photo->temporaryUrl() }}">
+-->
             @else
                 <img id="img-preview" src="{{ $photo->temporaryUrl() }}">
             @endif
         @endforeach
         </div>
-        <input id="selector" type="file" accept="image/*">
-        @error('photo') <span class="error">{{ $message }}</span> @enderror
-        <button class="btn btn-sm btn-primary" type="submit">Save Photo</button>
     </form>
     <script>
         let normalBlob;

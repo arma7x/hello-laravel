@@ -41,7 +41,7 @@ class Gallery extends Component
     public function render()
     {
         return view('livewire.gallery', [
-            'collections' => GalleryModel::orderBy('created_at', 'desc')->paginate(10),
+            'collections' => GalleryModel::orderBy('created_at', 'desc')->paginate(12),
         ]);
     }
 }
